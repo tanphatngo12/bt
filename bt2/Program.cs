@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,22 +11,33 @@ namespace bt2
     {
         static void Main(string[] args)
         {
-            int sum = 0;
-            Console.WriteLine("Nhap so nguyen n");
+            int i;
+            Console.WriteLine("Nhap so nguyen to n");
             int n = int.Parse(Console.ReadLine());
-            for (int i = 2; i <= n; i++)
+            for (i = 1; i <= n; i++)
             {
-                sum = sum + i;
-                Console.WriteLine(" " + i);
+                int counter = 0;
+                for (int j = 2; j <= i / 2; j++)
+                {
+                    if (i % j == 0)
+                    {
+                        counter++;
+                        break;
+                    }
+                }
+
+                if (counter == 0 && i != 1)
+                {
+                    Console.Write("{0} ", i);
+                }
             }
-            Console.WriteLine("Tong la" + sum);
             Console.ReadLine();
-            ConsoleKeyInfo key;
+            /* ConsoleKeyInfo key;
             do
             {
                 key = Console.ReadKey();
             }
-            while (key.Key != ConsoleKey.Escape);
+            while (key.Key != ConsoleKey.Escape); */
         }
     }
 }
